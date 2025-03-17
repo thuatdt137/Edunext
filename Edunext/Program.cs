@@ -1,5 +1,4 @@
 using Edunext.Models;
-using Edunext.Repository;
 using Edunext.Service;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,10 +7,6 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<EdunextContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("EdunextDB")));
-builder.Services.AddScoped<IClassroomRepository, ClassroomRepository>();
-builder.Services.AddScoped<IUserRepository, UserRepository>();
-builder.Services.AddScoped<ICourseRepository, CourseRepository>();
-builder.Services.AddScoped<IClassEnrollmentRepository, ClassEnrollmentRepository>();
 
 builder.Services.AddScoped<IClassroomService, ClassroomService>();
 builder.Services.AddScoped<IUserService, UserService>();
