@@ -6,9 +6,9 @@ namespace Edunext.Service
     {
         private readonly EdunextContext _context;
         public CourseService(EdunextContext context) { _context = context; }
-        public Task<IEnumerable<Course>> getListOfCourses()
+        public List<Course> getListOfCourses()
         {
-            throw new NotImplementedException();
+            return _context.Courses.ToList();
         }
     }
 }

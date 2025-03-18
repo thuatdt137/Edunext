@@ -4,6 +4,6 @@ namespace Edunext.Service
 {
     public interface ICourseService
     {
-        Task<IEnumerable<Course>> getListOfCourses();
+        List<Course> getListOfCourses();
     }
 }

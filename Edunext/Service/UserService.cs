@@ -6,9 +6,9 @@ namespace Edunext.Service
     {
         private readonly EdunextContext _context;
         public UserService(EdunextContext context) { _context = context; }
-        public Task<IEnumerable<User>> getListOfTeachers()
+        public List<User> getListOfTeachers()
         {
-            throw new NotImplementedException();
+            return _context.Users.Where(x => x.Role == 2).ToList();
         }
     }
 }

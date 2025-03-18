@@ -153,7 +153,6 @@ public partial class EdunextContext : DbContext
                 .HasMaxLength(255)
                 .HasColumnName("class_name");
             entity.Property(e => e.CourseId).HasColumnName("course_id");
-            entity.Property(e => e.SemesterId).HasColumnName("semester_id");
             entity.Property(e => e.TeacherId).HasColumnName("teacher_id");
 
             entity.HasOne(d => d.Course).WithMany(p => p.Classrooms)

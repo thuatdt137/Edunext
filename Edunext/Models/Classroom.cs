@@ -9,8 +9,6 @@ public partial class Classroom
 
     public int CourseId { get; set; }
 
-    public int SemesterId { get; set; }
-
     public int TeacherId { get; set; }
 
     public string ClassName { get; set; } = null!;

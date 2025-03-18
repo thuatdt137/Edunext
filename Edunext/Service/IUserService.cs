@@ -4,6 +4,6 @@ namespace Edunext.Service
 {
     public interface IUserService
     {
-        Task<IEnumerable<User>> getListOfTeachers();
+        List<User> getListOfTeachers();
     }
 }

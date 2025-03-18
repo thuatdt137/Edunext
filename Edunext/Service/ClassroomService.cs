@@ -1,4 +1,5 @@
 ﻿using Edunext.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Edunext.Service
 {
@@ -6,14 +7,47 @@ namespace Edunext.Service
     {
         private readonly EdunextContext _context;
         public ClassroomService(EdunextContext context) { _context = context; }
-        public Task<IEnumerable<Classroom>> saveClass(int teacherId, int courseId, string name)
+        public string saveClass(int teacherId, int courseId, string name)
         {
-            throw new NotImplementedException();
+            string message = "";
+            try
+            {
+                var boolCheck = validateClass(name);
+                
+                if (boolCheck)
+                {
+                    message = "Class name already exists.";
+                }
+                else
+                {
+                    var newClass = new Classroom
+                    {
+                        TeacherId = teacherId,
+                        CourseId = courseId,
+                        ClassName = name
+                    };
+                    _context.Classrooms.Add(newClass);
+                    _context.SaveChanges();
+
+                    message = "Class created successfully.";
+
+                }
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
+            return message;
         }
 
         public bool validateClass(string name)
         {
-            throw new NotImplementedException();
+            var queryClass = _context.Classrooms.FirstOrDefault(x => x.ClassName.Equals(name.Trim()));
+
+            return queryClass != null;
         }
+
+   
+
     }
 }
