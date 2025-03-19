@@ -12,14 +12,7 @@ namespace Edunext.Service
             string message = "";
             try
             {
-                var boolCheck = validateClass(name);
-                
-                if (boolCheck)
-                {
-                    message = "Class name already exists.";
-                }
-                else
-                {
+               
                     var newClass = new Classroom
                     {
                         TeacherId = teacherId,
@@ -31,7 +24,6 @@ namespace Edunext.Service
 
                     message = "Class created successfully.";
 
-                }
             }
             catch(Exception e)
             {

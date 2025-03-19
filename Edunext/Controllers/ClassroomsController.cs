@@ -69,7 +69,16 @@ namespace Edunext.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ClassId,CourseId,SemesterId,TeacherId,ClassName")] Classroom classroom)
         {
-            var msg = _classroomService.saveClass(classroom.TeacherId, classroom.CourseId, classroom.ClassName);
+            var boolCheck = _classroomService.validateClass(classroom.ClassName);
+            var msg = "";
+            if (boolCheck)
+            {
+                msg = "Class name already exists.";
+            }
+            else
+            {
+                msg = _classroomService.saveClass(classroom.TeacherId, classroom.CourseId, classroom.ClassName);
+            }
             TempData["Message"] = msg;
             return RedirectToAction("Create");
         }
